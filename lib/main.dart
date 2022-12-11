@@ -1,4 +1,5 @@
 import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
+import 'package:auto_sales_flutter/login.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_sales_flutter/splash_screen.dart';
 
@@ -18,7 +19,7 @@ class AutoSales extends StatelessWidget {
         appBar: AppBar(
           title: Text('Auto Sales'),
         ),
-        body: SplashScreen(),
+        body: Login(),
       ),
     );
   }

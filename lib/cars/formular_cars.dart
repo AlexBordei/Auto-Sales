@@ -62,8 +62,9 @@ class _FormularState extends State<Formular> {
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return 'This field is required.';
-                }
+                }else{
                 return null;
+                }
               },
             ),
             const SizedBox(height: 50.0),
