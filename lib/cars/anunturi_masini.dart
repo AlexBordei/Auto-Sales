@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_sales_flutter/cars/list_widget_masini.dart';
 
-class Anunturi extends StatefulWidget {
-  @override
-  State<Anunturi> createState() => _AnunturiState();
-}
-
-class _AnunturiState extends State<Anunturi> {
+class Anunturi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Toate Anunturile'),
+        title: Text('Toate Anunturile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

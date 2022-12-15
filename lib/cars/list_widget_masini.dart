@@ -1,6 +1,7 @@
 import 'package:auto_sales_flutter/models/anunt_cars.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_sales_flutter/cars/cards_cars.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ListItems extends StatelessWidget {
   final List<AnuntModel> anunturi = [
@@ -24,19 +25,23 @@ class ListItems extends StatelessWidget {
     ),
   ];
 
+//  static const likedkey = 'liked_Key';
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      
         itemCount: anunturi.length,
         itemBuilder: (context, index) {
           print(index);
 
           return CardAnunt(
+            index: index,
             titleCars: anunturi[index].title ?? '',
             descriptionCars: anunturi[index].description,
             imageCars: anunturi[index].imageUrl != null
                 ? Image.asset(anunturi[index].imageUrl!)
                 : Image.asset('assets/logo.png'),
+                
           );
         });
   }

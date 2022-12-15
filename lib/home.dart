@@ -1,8 +1,6 @@
-import 'package:auto_sales_flutter/cars/anunt_masina_detaliat.dart';
 import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
 import 'package:auto_sales_flutter/pieces/anunturi_piese.dart';
 import 'package:flutter/material.dart';
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  
+
   static final List<Widget> _pages = <Widget>[
     Anunturi(),
     AnunturiPiese(),
@@ -28,40 +26,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Center(
         child: _pages.elementAt(_selectedIndex),
-        
-
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items:  <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Cars',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.car_repair),
             label: 'Pieces',
-           
           ),
-          
         ],
-
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.greenAccent,
-
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             _selectedIndex = index;
-            
           });
         },
       ),
     );
   }
 }
-
-//de pus pe github
-// de desemat pe foaie widgettree in fiecare situatie

@@ -3,6 +3,9 @@ import 'package:auto_sales_flutter/models/anunt_piese.dart';
 import 'package:flutter/material.dart';
 
 class ListItemsPiese extends StatelessWidget {
+
+  ListItemsPiese({super.key});
+
   final List<AnuntModelPiese> anunturiPiese = [
     AnuntModelPiese(
       titlePiese: 'Toyota Piese',
@@ -26,8 +29,6 @@ class ListItemsPiese extends StatelessWidget {
     ),
   ];
 
-  ListItemsPiese({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -36,6 +37,7 @@ class ListItemsPiese extends StatelessWidget {
           print(index);
           
           return CardAnuntPiese(
+            index:index,
             titlePiese: anunturiPiese[index].titlePiese,
             descriptionPiese: anunturiPiese[index].descriptionPiese,
             imagePiese: anunturiPiese[index].imageUrlPiese != null

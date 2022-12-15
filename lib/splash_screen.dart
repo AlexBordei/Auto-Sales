@@ -11,17 +11,17 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const Home(),
+            builder: (context) =>  Home(),
           ),
           (route) =>
               false); //am scos toate ecranele si am adaugat ecranul cu anunturi
     });
 
-    // TODO: Add Scaffold
+   
     return Scaffold(
       body: Stack(
         alignment: Alignment.bottomCenter,
