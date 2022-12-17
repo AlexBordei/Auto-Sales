@@ -13,10 +13,13 @@ class Anunturi extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-              onPressed: () {},
-              child: ListItems()),
+          child: AspectRatio(
+            aspectRatio: 16/9,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                onPressed: () {},
+                child: ListItems()),
+          ),
         ),
       ),
     );

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auto_sales_flutter/splash_screen.dart';
-import 'dart:html';
 import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
-
 import 'package:auto_sales_flutter/home.dart';
 
-import 'package:flutter/material.dart';
 
 void main() {
   runApp( AutoSales());

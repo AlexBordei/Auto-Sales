@@ -1,47 +1,40 @@
+import 'package:auto_sales_flutter/collection/lista_piese.dart';
 import 'package:auto_sales_flutter/pieces/cards_pieces.dart';
-import 'package:auto_sales_flutter/models/anunt_piese.dart';
 import 'package:flutter/material.dart';
+import '../models/anunt_piese.dart';
+
 
 class ListItemsPiese extends StatelessWidget {
 
-  ListItemsPiese({super.key});
+  List<AnuntModelPiese> tempList = [];
 
-  final List<AnuntModelPiese> anunturiPiese = [
-    AnuntModelPiese(
-      titlePiese: 'Toyota Piese',
-      descriptionPiese: 'DEZMEMBREZ DACIA LOGAN 1.5 DCI EURO 4',
-      imageUrlPiese: 'assets/Motor.jpg',
-    ),
-    AnuntModelPiese(
-      titlePiese: 'Toyota Piese',
-      descriptionPiese: 'DEZMEMBREZ DACIA LOGAN 1.5 DCI EURO 4',
-      imageUrlPiese: 'assets/Motor.jpg',
-    ),
-    AnuntModelPiese(
-      titlePiese: 'Toyota Piese',
-      descriptionPiese: 'DEZMEMBREZ DACIA LOGAN 1.5 DCI EURO 4',
-      imageUrlPiese: 'assets/Motor.jpg',
-    ),
-    AnuntModelPiese(
-      titlePiese: 'Toyota Piese',
-      descriptionPiese: 'DEZMEMBREZ DACIA LOGAN 1.5 DCI EURO 4',
-      imageUrlPiese: 'assets/Motor.jpg',
-    ),
-  ];
+  ListItemsPiese({super.key, this.marca}) {
+    
+
+    for (var element in ListaPiese.anunturiPiese) {
+      if (marca != null && element.marca == marca) {
+        tempList.add(element);
+      } else if (marca == null) {
+        tempList.add(element);
+      }
+    }
+  }
+
+  String? marca;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: anunturiPiese.length,
+        itemCount: tempList.length,
         itemBuilder: (context, index) {
           print(index);
-          
+
           return CardAnuntPiese(
-            index:index,
-            titlePiese: anunturiPiese[index].titlePiese,
-            descriptionPiese: anunturiPiese[index].descriptionPiese,
-            imagePiese: anunturiPiese[index].imageUrlPiese != null
-                ? Image.asset(anunturiPiese[index].imageUrlPiese!)
+            index: index,
+            titlePiese: tempList[index].titlePiese,
+            descriptionPiese: tempList[index].descriptionPiese,
+            imagePiese: tempList[index].imageUrlPiese != null
+                ? Image.asset(tempList[index].imageUrlPiese!)
                 : Image.asset('asset/logo.png'),
           );
         });

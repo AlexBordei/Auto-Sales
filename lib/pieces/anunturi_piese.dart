@@ -1,8 +1,17 @@
-
+import 'package:auto_sales_flutter/collection/lista_piese.dart';
+import 'package:auto_sales_flutter/models/anunt_piese.dart';
 import 'package:auto_sales_flutter/pieces/list_widget_piese.dart';
 import 'package:flutter/material.dart';
 
-class AnunturiPiese extends StatelessWidget {
+class AnunturiPiese extends StatefulWidget {
+  @override
+  State<AnunturiPiese> createState() => _AnunturiPieseState();
+}
+
+class _AnunturiPieseState extends State<AnunturiPiese> {
+  
+  var dropdownValue = null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,57 +19,48 @@ class AnunturiPiese extends StatelessWidget {
         title: Text('Anunturi Piese'),
       ),
       drawer: Drawer(
-        child:ListView( 
+        child: ListView(
           padding: EdgeInsets.all(0.0),
           children: [
-            DrawerHeader( 
-
-            decoration: BoxDecoration( 
-              color: Colors.blue,
-              
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Produse'),
             ),
-            child: Text('Produse'),
-            ),
-            ListTile( 
-              title: Text('Marca'),
-              onTap: (){
-Navigator.pop(context);
-
-              },
-
-            ),
-            
-            ListTile( 
-              title: Text('Culoare'),
-              onTap: (){
-Navigator.pop(context);
-
-              },
-
-            ),
-            ListTile( 
-              title: Text('Combustibil'),
-              onTap: (){
-Navigator.pop(context);
-
-              },
-
-            ),
+            DropdownButton(
+                value: dropdownValue,
+                onChanged: (value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    dropdownValue = value!; //
+                  });
+                  Navigator.pop(context);
+                },
+                items: ListaPiese.anunturiPiese
+                    .map<DropdownMenuItem<String>>((AnuntModelPiese value) {
+                  return DropdownMenuItem(
+                    value: value.marca ?? '',
+                    child: Text('${value.marca}'),
+                  );
+                }).toList()
+                  ..insert(
+                      0,
+                      DropdownMenuItem(
+                        child: Text('Select marca'),
+                        value: null,
+                      ))),
           ],
-
-
-
-        ) ,
         ),
-      body: Padding(
+      ),
+      body: Container(
         padding: const EdgeInsets.all(10.0),
-        child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-              onPressed: () {},
-              child: ListItemsPiese()),
-        ),
+        child: MaterialButton(
+            // style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+            onPressed: () {},
+            child: ListItemsPiese(
+              marca: dropdownValue,
+            )),
       ),
     );
   }
