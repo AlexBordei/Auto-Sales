@@ -9,7 +9,6 @@ class AnunturiPiese extends StatefulWidget {
 }
 
 class _AnunturiPieseState extends State<AnunturiPiese> {
-  
   var dropdownValue = null;
 
   @override
@@ -33,7 +32,7 @@ class _AnunturiPieseState extends State<AnunturiPiese> {
                 onChanged: (value) {
                   // This is called when the user selects an item.
                   setState(() {
-                    dropdownValue = value!; //
+                    dropdownValue = value; //
                   });
                   Navigator.pop(context);
                 },
